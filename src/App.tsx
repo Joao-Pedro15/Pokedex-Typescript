@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { PokemonContext } from './context'
+import { Homepage } from './pages'
 
 function App() {
   const { pokemons } = useContext(PokemonContext)
@@ -8,9 +9,7 @@ function App() {
     
   }, [pokemons])
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <Homepage />
   );
 }
 
