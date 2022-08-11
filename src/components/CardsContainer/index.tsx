@@ -12,7 +12,7 @@ export const CardsContainer = () => {
     }, [pokemons])
     return (
         <S.Container>
-            { pokemonLoading && (
+            { !pokemons && (
                 <>
                     <h1>Porra se fuder</h1>
                 </>
