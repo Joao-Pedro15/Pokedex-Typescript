@@ -1,25 +1,24 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { PokemonContext } from '../../context'
+import { API } from '../../services/api'
 import { CardPokemon } from '../CardPokemon'
 import * as S from './style'
 
 export const CardsContainer = () => {
-    const { pokemons, pokemonLoading } = useContext(PokemonContext)
-    useEffect(() => {
-        console.log(pokemonLoading)
-        
-        console.log(pokemons, 'poke');
-    }, [pokemons])
+    const { pokemonData, pokemonLoading, pokemonSuccess } = useContext(PokemonContext)
+
     return (
         <S.Container>
-            { !pokemons && (
+            {pokemonLoading && (
+                <h1>Carregando...</h1>
+            )}
+            { pokemonData && (
                 <>
-                    <h1>Porra se fuder</h1>
+                    { pokemonData.results.map((pokemon:any, index:number) => (
+                        <CardPokemon pokemon={pokemon} key={index} />
+                    )) }
                 </>
             ) }
-            { pokemons.map((pokemon:any) => (
-                <CardPokemon pokemon={pokemon} key={pokemon.id} />
-            )) }
         </S.Container>
     )
 }
