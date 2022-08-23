@@ -6,6 +6,4 @@ export const Container = styled.div`
     gap: 20px;
     padding: 20px;
     background: linear-gradient(0deg, cyan, red);
-    min-height: 100vh;
-    height: 100%;
 `
