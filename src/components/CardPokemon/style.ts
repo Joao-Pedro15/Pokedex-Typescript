@@ -35,6 +35,7 @@ export const Container = styled.div<IProps>`
 .card_front{
     transform: rotateY(180deg);
     background-color: #333;
+    background: linear-gradient(0deg, cyan, red);
     color: #fff;
 
 }
@@ -42,6 +43,6 @@ export const Container = styled.div<IProps>`
 .card_back{
     color: #FFF;
     background-color: #333;
-
+    background: linear-gradient(0deg, cyan, red);
 }
 `
