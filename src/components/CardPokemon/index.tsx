@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "../../services/api";
 import * as S from './style'
+import { TailSpin }  from 'react-loader-spinner'
 
 type ICardPokemon = {   
     name: string
@@ -26,7 +27,18 @@ export const CardPokemon =  ({ pokemon } : any) => {
     return(
         <S.Container onClick={() => setFlipped((prev) => !prev)} flipped={flipped}>
             { !pokemonData ? (
-                <h1>Carregando</h1>
+                <S.LoadingContent>
+                <TailSpin
+                height="80"
+                width="80"
+                color='red'
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+                </S.LoadingContent>
             ) : (
             <>
             <div className="card_front">
