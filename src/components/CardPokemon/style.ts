@@ -46,3 +46,12 @@ export const Container = styled.div<IProps>`
     background: linear-gradient(0deg, cyan, red);
 }
 `
+
+export const LoadingContent = styled.div`
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color: #eee;
+`
