@@ -1,10 +1,11 @@
 import styled from 'styled-components'
-// import ICON from '../../assets/headerTop.png'
 export const Container = styled.header`
   width: 100vw;
   position: relative;
   img:nth-child(1){
     width: 100%;
+    position: relative;
+    top: -10px;
   }
   div {
     position: absolute;
@@ -14,7 +15,7 @@ export const Container = styled.header`
     display: grid;
     place-items: center;
     img {
-      max-width: 100px;
+      max-width: 80px;
     }
   }
 `

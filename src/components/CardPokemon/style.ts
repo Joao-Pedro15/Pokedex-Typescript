@@ -6,8 +6,8 @@ type IProps = {
 
 export const Container = styled.div<IProps>`
     
-    width: 240px;
-    height: 250px;
+    width: 220px;
+    height: 220px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform .8s ease-in-out;
@@ -37,7 +37,6 @@ export const Container = styled.div<IProps>`
     background-color: #333;
     background: linear-gradient(0deg, cyan, red);
     color: #fff;
-
 }
 
 .card_back{

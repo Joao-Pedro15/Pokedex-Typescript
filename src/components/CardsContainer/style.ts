@@ -2,21 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr 1fr 1fr;
-    gap: 20px;
+    grid-template: 1fr / 1fr 1fr 1fr;
+    place-items: center;
+    gap: 30px;
     padding: 20px;
-    /* background: linear-gradient(0deg, cyan, red); */
-    height: auto;
-    max-height:75vh;
+    max-height:70vh;
     position: relative;
-    /* background-color: #ddd; */
     width: 90vw;
     margin: auto;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,.5);
     overflow-y: auto;
     overflow-x: hidden;
-
+    margin-top: 10px;
 `
 
 export const LoadingContent = styled.div`

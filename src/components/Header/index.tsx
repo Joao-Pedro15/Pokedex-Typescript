@@ -6,9 +6,9 @@ import Pokeball from '../../assets/pokeball.png'
 export const Header : React.FC = () => {
   return(
     <S.Container>
-      <img src={HeaderTop} alt="OPA" />
+      <img src={HeaderTop} alt="header image" />
       <div>
-        <img src={Pokeball} alt="opa  " />
+        <img src={Pokeball} alt="pokeball image" />
       </div>
     </S.Container>
   )
