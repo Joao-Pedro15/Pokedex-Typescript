@@ -1,10 +1,19 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import * as S from './style'
 
-export const SearchInput = () => {
+type SearchInputProps = {
+    setInputState: Dispatch<SetStateAction<string>>
+}
+
+export const SearchInput = ({ setInputState } : SearchInputProps) => {
     return(
         <S.Container>
-            <input type="text" placeholder="Nome do pokemon" />
+            <S.Input
+            onChange={(e:React.ChangeEvent<HTMLInputElement>) => setInputState(e.target.value)}
+            debounceTimeout={600}
+            />
+            {/* <input type="text" placeholder="Nome do pokemon" /> */}
+            {/* // UMA IDEIA É COLOCAR UMA LOGO DE POKEAPI AQUI */}
         </S.Container>
     )
 }
