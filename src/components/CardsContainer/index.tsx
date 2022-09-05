@@ -1,11 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { TailSpin } from 'react-loader-spinner'
 import { PokemonContext } from '../../context'
 import { CardPokemon } from '../CardPokemon'
+import InfiniteScroll from '../InfiniteScroll'
 import * as S from './style'
 
 export const CardsContainer = () => {
-    const { pokemonData, pokemonLoading, pokemonSuccess } = useContext(PokemonContext)
+    const { pokemonData, pokemonLoading, pokemonSuccess, fetchNextPage } = useContext(PokemonContext)
+    const [loadMore, setLoadMore] = useState(true)
+
+    const getNewPokemons = (bool: boolean) => {
+        setLoadMore(!bool)
+        fetchNextPage()
+    }
 
     return (
         <S.Container>
@@ -25,11 +32,18 @@ export const CardsContainer = () => {
             )}
             { pokemonData && (
                 <>
-                    { pokemonData.results.map((pokemon:any, index:number) => (
-                        <CardPokemon pokemon={pokemon} key={index} />
+                    { pokemonData.pages.map((pokemonPage:any) => (
+                        <>
+                        { pokemonPage.results.map((pokemon:any, index:number) => (
+                        <>
+                            <CardPokemon pokemon={pokemon} key={index} />
+                        </>
+                    )) }
+                        </>
                     )) }
                 </>
             ) }
+            <InfiniteScroll loadMore={getNewPokemons} />
         </S.Container>
     )
 }

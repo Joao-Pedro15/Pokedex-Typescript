@@ -18,12 +18,12 @@ interface InfoProps {
 }
 export function PokemonProvider({ children }: Props) {
   const [searchPokemon, setSearchPokemon] = useState('')
-  const { pokemonData, pokemonSuccess, pokemonLoading } = usePokemon(0, 10, searchPokemon)
+  const { pokemonData, pokemonSuccess, pokemonLoading, fetchNextPage } = usePokemon(0, 10, searchPokemon)
 
 
 
   return (
-    <PokemonContext.Provider value={{ pokemonData, pokemonLoading, pokemonSuccess, setSearchPokemon }}>
+    <PokemonContext.Provider value={{ pokemonData, pokemonLoading, pokemonSuccess, setSearchPokemon, fetchNextPage }}>
       {children}</PokemonContext.Provider>
   )
 }
