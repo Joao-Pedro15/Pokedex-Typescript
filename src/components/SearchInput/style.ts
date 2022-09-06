@@ -33,4 +33,10 @@ input {
 export const Logo = styled.div`
     font-size: 2rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    span {
+        color: red;
+        font-weight: bold;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 2.3rem;
+    }
 `
