@@ -29,3 +29,8 @@ input {
         box-shadow: 3px 4px 15px rgba(0,0,0,.5);
     }
 `
+
+export const Logo = styled.div`
+    font-size: 2rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+`
