@@ -12,6 +12,9 @@ export const SearchInput = ({ setInputState } : SearchInputProps) => {
             onChange={(e:React.ChangeEvent<HTMLInputElement>) => setInputState(e.target.value)}
             debounceTimeout={600}
             />
+            <S.Logo>
+                Poké <span>API</span>
+            </S.Logo>
             {/* <input type="text" placeholder="Nome do pokemon" /> */}
             {/* // UMA IDEIA É COLOCAR UMA LOGO DE POKEAPI AQUI */}
         </S.Container>
