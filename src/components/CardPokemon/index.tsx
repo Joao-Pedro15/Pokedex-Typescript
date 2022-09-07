@@ -8,7 +8,10 @@ type ICardPokemon = {
     sprites: {
         back_default: string
         front_default: string
-    }
+    },
+    types:{
+        type: { name: string }
+    }[]
 } 
 
 export const CardPokemon =  ({ pokemon } : any) => {
@@ -25,7 +28,7 @@ export const CardPokemon =  ({ pokemon } : any) => {
     }, [])
 
     return(
-        <S.Container onClick={() => setFlipped((prev) => !prev)} flipped={flipped}>
+        <S.Container onClick={() => setFlipped((prev) => !prev)} flipped={flipped} bg={'wahter'}>
             { !pokemonData ? (
                 <S.LoadingContent>
                 <TailSpin
@@ -41,14 +44,18 @@ export const CardPokemon =  ({ pokemon } : any) => {
                 </S.LoadingContent>
             ) : (
             <>
-            <div className="card_front">
-                <p>{pokemonData!.name}</p>
-                <img src={pokemonData.sprites.front_default} alt={`image ${pokemon.name}`} />
-            </div>
-            <div className="card_back">
-                <p>{pokemonData.name}</p>
-                <img src={pokemonData.sprites.back_default} alt={`image ${pokemon.name}`} />
-            </div>
+            {console.log(pokemonData!.types[0].type.name, 'opaoa')
+            }            
+            <S.Card bg={pokemonData.types[0].type.name}>
+                <div className="card_front">
+                    <p>{pokemonData!.name}</p>
+                    <img src={pokemonData.sprites.front_default} alt={`image ${pokemon.name}`} />
+                </div>
+                <div className="card_back">
+                    <p>{pokemonData.name}</p>
+                    <img src={pokemonData.sprites.back_default} alt={`image ${pokemon.name}`} />
+                </div>
+            </S.Card>
             </>
             )}
         </S.Container>
