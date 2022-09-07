@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import { colors }  from './colors'
 
 type IProps = {
     flipped: boolean
+    bg: string | null | undefined
 }
 
 export const Container = styled.div<IProps>`
     
-    width: 220px;
-    height: 220px;
+    width: 260px;
+    height: 200px;
     position: relative;
     transform-style: preserve-3d;
     transition: transform .8s ease-in-out;
@@ -16,9 +18,15 @@ export const Container = styled.div<IProps>`
     img{
         width: 100px;
     }
+`
 
-
-.card_back, .card_front{
+export const Card = styled.div<{bg:string}>`
+    transform-style: preserve-3d;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    .card_back, .card_front{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -35,15 +43,16 @@ export const Container = styled.div<IProps>`
 .card_front{
     transform: rotateY(180deg);
     background-color: #333;
-    background: linear-gradient(0deg, cyan, red);
+    background: ${({bg}) => bg ? colors[bg] : 'blue'};
     color: #fff;
 }
 
 .card_back{
     color: #FFF;
     background-color: #333;
-    background: linear-gradient(0deg, cyan, red);
+    background: ${({bg}) => bg ? colors[bg] : 'blue'};
 }
+
 `
 
 export const LoadingContent = styled.div`
