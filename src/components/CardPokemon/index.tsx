@@ -28,7 +28,7 @@ export const CardPokemon =  ({ pokemon } : any) => {
     }, [])
 
     return(
-        <S.Container onClick={() => setFlipped((prev) => !prev)} flipped={flipped} bg={'wahter'}>
+        <S.Container onClick={() => setFlipped((prev) => !prev)} flipped={flipped} >
             { !pokemonData ? (
                 <S.LoadingContent>
                 <TailSpin

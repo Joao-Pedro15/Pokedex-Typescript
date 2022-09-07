@@ -3,7 +3,6 @@ import { colors }  from './colors'
 
 type IProps = {
     flipped: boolean
-    bg: string | null | undefined
 }
 
 export const Container = styled.div<IProps>`
@@ -50,11 +49,10 @@ export const Card = styled.div<{bg:string}>`
 .card_back{
     color: #FFF;
     background-color: #333;
-    background: ${({bg}) => bg ? colors[bg] : 'blue'};
+    background: ${({bg}) => bg ? colors[bg] : '#333'};
 }
 
 `
-
 export const LoadingContent = styled.div`
     position: relative;
     width: 100%;
