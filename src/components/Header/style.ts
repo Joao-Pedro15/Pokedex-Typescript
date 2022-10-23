@@ -1,21 +1,23 @@
 import styled from 'styled-components'
 export const Container = styled.header`
   width: 100vw;
-  position: relative;
-  img:nth-child(1){
-    width: 100%;
-    position: relative;
-    top: -10px;
+  display: flex;
+  padding: 10px 100px;
+  box-shadow: 6px 4px 5px #ccc;
+  div{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row;
   }
-  div {
-    position: absolute;
-    top: 10%;
-    left: 0;
-    width: 100%;
-    display: grid;
-    place-items: center;
-    img {
-      max-width: 80px;
-    }
+  div img {
+    max-width: 3.5rem;
+  }
+  div h1, div span{
+    font-family: cursive;
+    font-size: 2rem;
+  }
+  div span {
+    color: red;
   }
 `
