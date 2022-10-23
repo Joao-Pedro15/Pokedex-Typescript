@@ -3,6 +3,7 @@ import React, { createContext, useState, useEffect, ReactElement } from "react"
 import { API } from "../services/api";
 
 import { usePokemon } from '../services/hooks/usePokemon'
+import { gettingAll } from "../utils/gettingAll";
 
 interface ContextType {
   setName: React.Dispatch<React.SetStateAction<string>>;
@@ -23,19 +24,11 @@ export function PokemonProvider({ children }: Props) {
   const { pokemonData, pokemonSuccess, pokemonLoading, fetchNextPage } = usePokemon(url)
   const [pokemons, setPokemons] = useState<any[] | null>(null)
 
-  type ResultType = {
-    url: string
-    name: string
-  }
+  
 
   useEffect(() => {
     if(pokemonData!!) {
-      let tmpArray : any[] = []
-      pokemonData.pages[0].results.map(async (result:ResultType) => {
-        const { data } = await axios.get(result.url)        
-        tmpArray.push({name: data.name, types: data.types, image: {front: data.sprites.front_default, back: data.sprites.back_default}})
-      })     
-      setPokemons(tmpArray)        
+      setPokemons(gettingAll([], pokemonData))        
     }
   }, [pokemonData])
 
