@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { createContext, useState, useEffect, ReactElement } from "react"
 import { API } from "../services/api";
 
@@ -18,9 +19,25 @@ interface InfoProps {
 }
 export function PokemonProvider({ children }: Props) {
   const [searchPokemon, setSearchPokemon] = useState('')
-  const { pokemonData, pokemonSuccess, pokemonLoading, fetchNextPage } = usePokemon(0, 10, searchPokemon)
+  const [url, setUrl] = useState('?limit=10&offSet=0')
+  const { pokemonData, pokemonSuccess, pokemonLoading, fetchNextPage } = usePokemon(url)
+  const [pokemons, setPokemons] = useState<any[] | null>(null)
 
+  type ResultType = {
+    url: string
+    name: string
+  }
 
+  useEffect(() => {
+    if(pokemonData!!) {
+      let tmpArray : any[] = []
+      pokemonData.pages[0].results.map(async (result:ResultType) => {
+        const { data } = await axios.get(result.url)        
+        tmpArray.push({name: data.name, types: data.types, image: {front: data.sprites.front_default, back: data.sprites.back_default}})
+      })     
+      setPokemons(tmpArray)        
+    }
+  }, [pokemonData])
 
   return (
     <PokemonContext.Provider value={{ pokemonData, pokemonLoading, pokemonSuccess, setSearchPokemon, fetchNextPage }}>
