@@ -33,7 +33,7 @@ export function PokemonProvider({ children }: Props) {
   }, [pokemonData])
 
   return (
-    <PokemonContext.Provider value={{ pokemonData, pokemonLoading, pokemonSuccess, setSearchPokemon, fetchNextPage }}>
+    <PokemonContext.Provider value={{ pokemonData, pokemonLoading, pokemonSuccess, setSearchPokemon, fetchNextPage, pokemons }}>
       {children}</PokemonContext.Provider>
   )
 }
