@@ -4,6 +4,8 @@ export const Container = styled.header`
   display: flex;
   padding: 10px 100px;
   box-shadow: 6px 4px 5px #ccc;
+  align-items: center;
+  justify-content: space-between;
   div{
     display: flex;
     gap: 20px;
@@ -19,5 +21,15 @@ export const Container = styled.header`
   }
   div span {
     color: red;
+  }
+  div:last-of-type{
+    width: 35%;
+  }
+  div input {
+    width: 100%;
+    padding:10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ccc;
   }
 `
