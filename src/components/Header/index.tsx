@@ -9,6 +9,9 @@ export const Header : React.FC = () => {
         <img src={Pokeball} alt="pokeball image" />
         <h1>Poke<span>Api</span></h1>
       </div>
+      <div>
+        <input type="text" placeholder="Pesquise por nome" />
+      </div>
     </S.Container>
   )
 } 
