@@ -1,7 +1,9 @@
+import axios from "axios";
 import React, { createContext, useState, useEffect, ReactElement } from "react"
 import { API } from "../services/api";
 
 import { usePokemon } from '../services/hooks/usePokemon'
+import { gettingAll } from "../utils/gettingAll";
 
 interface ContextType {
   setName: React.Dispatch<React.SetStateAction<string>>;
@@ -18,9 +20,17 @@ interface InfoProps {
 }
 export function PokemonProvider({ children }: Props) {
   const [searchPokemon, setSearchPokemon] = useState('')
-  const { pokemonData, pokemonSuccess, pokemonLoading, fetchNextPage } = usePokemon(0, 10, searchPokemon)
+  const [url, setUrl] = useState('?limit=10&offSet=0')
+  const { pokemonData, pokemonSuccess, pokemonLoading, fetchNextPage } = usePokemon(url)
+  const [pokemons, setPokemons] = useState<any[] | null>(null)
 
+  
 
+  useEffect(() => {
+    if(pokemonData!!) {
+      setPokemons(gettingAll([], pokemonData))        
+    }
+  }, [pokemonData])
 
   return (
     <PokemonContext.Provider value={{ pokemonData, pokemonLoading, pokemonSuccess, setSearchPokemon, fetchNextPage }}>
