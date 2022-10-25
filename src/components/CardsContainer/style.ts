@@ -6,9 +6,9 @@ export const Container = styled.div`
     place-items: center;
     gap: 30px;
     padding: 20px;
-    max-height:70vh;
+    height: 80vh;
     position: relative;
-    width: 90vw;
+    width: 100vw;
     margin: auto;
     overflow-y: auto;
     overflow-x: hidden;
