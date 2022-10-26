@@ -1,3 +1,4 @@
+import { DebounceInput } from 'react-debounce-input'
 import styled from 'styled-components'
 export const Container = styled.header`
   width: 100vw;
@@ -32,4 +33,12 @@ export const Container = styled.header`
     outline: none;
     border: 1px solid #ccc;
   }
+`
+
+export const Input = styled(DebounceInput)<any>`
+width: 100%;
+    padding:10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ccc;
 `
