@@ -21,7 +21,7 @@ interface InfoProps {
 export function PokemonProvider({ children }: Props) {
   const [searchPokemon, setSearchPokemon] = useState('')
   const [url, setUrl] = useState('?limit=10&offSet=0')
-  const { pokemonData, pokemonSuccess, pokemonLoading, fetchNextPage } = usePokemon(url)
+  const { pokemonData, pokemonSuccess, pokemonLoading, fetchNextPage } = usePokemon(0, 10, searchPokemon)
   const [pokemons, setPokemons] = useState<any[] | null>(null)
 
   
