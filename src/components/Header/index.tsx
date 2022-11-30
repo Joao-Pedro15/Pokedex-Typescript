@@ -4,7 +4,7 @@ import Pokeball from '../../assets/pokeball.png'
 import { PokemonContext } from '../../context/index'
 
 export const Header : React.FC = () => {
-  const { setInputState } = useContext(PokemonContext)
+  const { setSearchPokemon } = useContext(PokemonContext)
   return(
     <S.Container>
       <div>
@@ -13,7 +13,7 @@ export const Header : React.FC = () => {
       </div>
       <div>
         <S.Input
-        onChange={(e:React.ChangeEvent<HTMLInputElement>) => setInputState(e.target.value)}
+        onChange={(e:React.ChangeEvent<HTMLInputElement>) => setSearchPokemon(e.target.value)}
         debounceTimeout={600}
         placeholder='Pesquise por nome'        
         />

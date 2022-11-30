@@ -6,7 +6,7 @@ import InfiniteScroll from '../InfiniteScroll'
 import * as S from './style'
 
 export const CardsContainer = () => {
-    const { pokemonData, pokemonLoading, pokemonSuccess, fetchNextPage } = useContext(PokemonContext)
+    const { pokemonData, pokemonLoading, pokemonSuccess, fetchNextPage, pokemons } = useContext(PokemonContext)
     const [loadMore, setLoadMore] = useState(true)
 
     const getNewPokemons = (bool: boolean) => {
@@ -16,7 +16,7 @@ export const CardsContainer = () => {
 
     return (
         <S.Container>
-            {pokemonLoading && (
+            {!pokemonData && (
                 <S.LoadingContent>
                 <TailSpin
                 height="80"
@@ -30,15 +30,23 @@ export const CardsContainer = () => {
               />
                 </S.LoadingContent>
             )}
+
+            { console.log(pokemonData, 'opa opa opaopawiefjeiofjeoifjefiojs')
+             }
             { pokemonData && (
                 <>
                     { pokemonData.pages.map((pokemonPage:any) => (
                         <>
-                        { pokemonPage.results.map((pokemon:any, index:number) => (
-                        <>
-                            <CardPokemon pokemon={pokemon} key={index} />
-                        </>
-                    )) }
+                        { !pokemonPage.hasOwnProperty('results') ? (
+                            <CardPokemon pokemon={pokemonPage} key={1} isSearch={true} />
+                        ) : (
+                            <>
+                                { pokemonPage.results.map((pokemon:any, index: number) => (
+                                    <CardPokemon pokemon={pokemon} key={index} isSearch={false} />
+                                ))  }
+                            </>
+                        ) }
+                        
                         </>
                     )) }
                 </>

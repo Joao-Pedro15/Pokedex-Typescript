@@ -3,6 +3,11 @@ import { API } from "../../services/api";
 import * as S from './style'
 import { TailSpin }  from 'react-loader-spinner'
 
+interface IProps {
+    pokemon: any
+    isSearch?: boolean
+}
+
 type ICardPokemon = {   
     name: string
     sprites: {
@@ -12,9 +17,9 @@ type ICardPokemon = {
     types:{
         type: { name: string }
     }[]
-} 
+}
 
-export const CardPokemon =  ({ pokemon } : any) => {
+export const CardPokemon =  ({ pokemon, isSearch } : IProps) => {
     const [flipped, setFlipped] = useState<boolean>(false)
     const [pokemonData, setPokemonData] = useState<ICardPokemon | null>(null)
 
@@ -24,7 +29,8 @@ export const CardPokemon =  ({ pokemon } : any) => {
     }
 
     useEffect(() => {
-        getData()
+        if(!isSearch) { getData()}
+        else {setPokemonData(pokemon) }
     }, [])
 
     return(
@@ -44,8 +50,6 @@ export const CardPokemon =  ({ pokemon } : any) => {
                 </S.LoadingContent>
             ) : (
             <>
-            {console.log(pokemonData!.types[0].type.name, 'opaoa')
-            }            
             <S.Card bg={pokemonData.types[0].type.name}>
                 <div className="card_front">
                     <p>{pokemonData!.name}</p>
